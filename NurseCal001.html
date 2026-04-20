@@ -739,20 +739,6 @@ body.admin-mode .lnk-add-row{display:block}
     </div>
 
     <!-- MEDICINES / PRODUCTS -->
-    <div class="nav-section">
-      <div class="nav-item" id="snav-medicines" onclick="sidebarToggle('medicines',this)">
-        <span class="nav-icon">&#128138;</span>
-        <span class="nav-label">Medicines / Products</span>
-        <span class="nav-arrow">&#9654;</span>
-      </div>
-      <div class="nav-sub" id="ssub-medicines">
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Prescription Medicines</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Over-the-Counter (OTC)</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Vitamins &amp; Supplements</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Personal Care</span></div>
-      </div>
-    </div>
-
     <!-- HEALTH INFORMATION -->
     <div class="nav-section">
       <div class="nav-item" id="snav-health" onclick="sidebarToggle('health',this)">
@@ -769,6 +755,20 @@ body.admin-mode .lnk-add-row{display:block}
     </div>
 
     <!-- DRUG CALCULATOR TABS -->
+    <!-- MEDICINES / PRODUCTS -->
+    <div class="nav-section">
+      <div class="nav-item" id="snav-medicines" onclick="sidebarToggle('medicines',this)">
+        <span class="nav-icon">&#128138;</span>
+        <span class="nav-label">Medicines / Products</span>
+        <span class="nav-arrow">&#9654;</span>
+      </div>
+      <div class="nav-sub" id="ssub-medicines">
+        <div class="nav-sub-item"><span class="sub-dot"></span><span>Drug Catalogue</span></div>
+        <div class="nav-sub-item"><span class="sub-dot"></span><span>Paediatric Formulary</span></div>
+        <div class="nav-sub-item"><span class="sub-dot"></span><span>IV Compatibility</span></div>
+      </div>
+    </div>
+
     <div class="nav-section">
       <div class="nav-item" id="snav-calc" onclick="sidebarToggle('calc',this)">
         <span class="nav-icon">&#129514;</span>
@@ -784,15 +784,37 @@ body.admin-mode .lnk-add-row{display:block}
       </div>
     </div>
 
+
     <!-- ══ QUICK LINKS (Admin-managed) ══ -->
     <div class="nav-section" id="snav-links">
       <div class="nav-item" onclick="sidebarToggle('links',this)">
-        <span class="nav-icon">🔗</span>
+        <span class="nav-icon">&#128279;</span>
         <span class="nav-label">Quick Links</span>
         <span class="nav-arrow">&#9654;</span>
       </div>
       <div class="nav-sub" id="ssub-links">
         <!-- default NurseCal -->
+        <div class="nav-link-item" data-link-id="nursecal">
+          <span class="sub-dot" style="background:#7ddcb0"></span>
+          <a href="https://chhoeun01.github.io/nursecal/Nursecal.html" target="_blank"
+             onclick="closeSidebar()"
+             style="flex:1;color:inherit;text-decoration:none;display:flex;align-items:center;gap:6px;font-size:12px">
+            &#129518; NurseCal
+            <span style="font-family:var(--mono);font-size:8px;background:rgba(125,220,176,.2);color:#7ddcb0;padding:1px 6px;border-radius:8px">LINK</span>
+          </a>
+          <button class="lnk-del-btn" onclick="adminDeleteLink('nursecal')" title="Delete">&#10005;</button>
+        </div>
+        <!-- dynamic links from localStorage -->
+        <div id="nav-links-dynamic"></div>
+        <!-- admin add row -->
+        <div class="lnk-add-row" id="nav-link-add-row">
+          <button class="lnk-add-inline-btn" onclick="openLinkModal()">&#65291; Add Link</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ QUICK LINKS (Admin-managed) ══ -->
+    <!-- default NurseCal -->
         <div class="nav-link-item" data-link-id="nursecal">
           <span class="sub-dot" style="background:#7ddcb0"></span>
           <a href="https://chhoeun01.github.io/nursecal/Nursecal.html" target="_blank"
@@ -812,83 +834,27 @@ body.admin-mode .lnk-add-row{display:block}
       </div>
     </div>
 
-        <!-- UPLOAD PRESCRIPTION -->
-    <div class="nav-section">
-      <div class="nav-item" id="snav-rx" onclick="sidebarToggle('rx',this)">
-        <span class="nav-icon">&#128196;</span>
-        <span class="nav-label">Upload Prescription</span>
-        <span class="nav-arrow">&#9654;</span>
-      </div>
-      <div class="nav-sub" id="ssub-rx">
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Upload Prescription</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Pharmacist Review</span></div>
-      </div>
-    </div>
-
-    <!-- CONSULT A DOCTOR -->
-    <div class="nav-section">
-      <div class="nav-item" id="snav-nursing" onclick="sidebarToggle('nursing',this)">
-        <span class="nav-icon">&#128138;</span>
-        <span class="nav-label">Nursing Care</span>
-        <span class="nav-arrow">&#9654;</span>
-      </div>
-      <div class="nav-sub" id="ssub-nursing">
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Vital Signs Monitoring</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Medication Administration</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Wound Care &amp; Dressing</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>IV &amp; Infusion Care</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Paediatric Assessment</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Nursing Documentation</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Infection Control</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Patient &amp; Family Education</span></div>
-      </div>
-    </div>
-
-    <!-- ABOUT US -->
-    <div class="nav-section">
-      <div class="nav-item" id="snav-about" onclick="sidebarToggle('about',this)">
-        <span class="nav-icon">&#127973;</span>
-        <span class="nav-label">About Us</span>
-        <span class="nav-arrow">&#9654;</span>
-      </div>
-      <div class="nav-sub" id="ssub-about">
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Who We Are</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Certifications &amp; Licenses</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Mission &amp; Values</span></div>
-      </div>
-    </div>
-
-    <!-- CONTACT US -->
-    <div class="nav-section">
-      <div class="nav-item" id="snav-contact" onclick="sidebarToggle('contact',this)">
-        <span class="nav-icon">&#128222;</span>
-        <span class="nav-label">Contact Us</span>
-        <span class="nav-arrow">&#9654;</span>
-      </div>
-      <div class="nav-sub" id="ssub-contact">
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Phone &amp; Email</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Live Chat</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Location Map</span></div>
-      </div>
-    </div>
-
-    <!-- MY ACCOUNT -->
-    <div class="nav-section">
-      <div class="nav-item" id="snav-account" onclick="sidebarToggle('account',this)">
+        <!-- STAFF APPROVAL (admin only) -->
+    <div class="nav-section" id="snav-approval" style="display:none">
+      <div class="nav-item" id="snav-rx" onclick="gotoApprovalDash()">
         <span class="nav-icon">&#128100;</span>
-        <span class="nav-label">My Account</span>
-        <span class="nav-arrow">&#9654;</span>
+        <span class="nav-label">Staff Approval</span>
+        <span class="nav-badge" style="background:#dc2626;color:#fff;font-size:8px;padding:2px 7px;border-radius:10px;font-family:var(--mono);font-weight:700" id="snav-pending-badge" style="display:none"></span>
       </div>
-      <div class="nav-sub" id="ssub-account">
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Login / Register</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Orders History</span></div>
-        <div class="nav-sub-item"><span class="sub-dot"></span><span>Saved Prescriptions</span></div>
+      <div class="nav-sub" id="ssub-rx" style="padding:0">
+        <div class="nav-sub-item" onclick="gotoApprovalDash('pending')" id="snav-pending-item">
+          <span class="sub-dot" style="background:#f59e0b"></span>
+          <span>Pending Approval</span>
+          <span id="snav-pending-count" style="margin-left:auto;background:#f59e0b;color:#fff;font-family:var(--mono);font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;display:none"></span>
+        </div>
+        <div class="nav-sub-item" onclick="gotoApprovalDash('staff')">
+          <span class="sub-dot" style="background:#60a5fa"></span>
+          <span>Staff Detail List</span>
+        </div>
       </div>
     </div>
 
-  </nav>
 
-  <!-- Admin section (visible in admin mode) -->
   <div class="sidebar-admin-bar">
     <div class="sidebar-admin-label">&#128275; Admin Tools</div>
     <button class="sidebar-admin-btn" onclick="openSidebarAddItem()">&#10133; Add Link</button>
@@ -928,10 +894,6 @@ body.admin-mode .lnk-add-row{display:block}
             <option value="calc">Drug Calculator</option>
             <option value="rx">Upload Prescription</option>
             <option value="offers">Offers / Discounts</option>
-            <option value="about">About Us</option>
-            <option value="contact">Contact Us</option>
-            <option value="nursing">Nursing Care</option>
-            <option value="account">My Account</option>
           </select>
         </div>
         <div><label class="form-label">Icon (emoji) <small style="font-weight:400;text-transform:none">for top-level only</small></label>
@@ -3920,12 +3882,16 @@ function doLogin(){
   document.getElementById('tab-login-btn').innerHTML='&#128100; '+found.name.split(' ')[0];
   var ds=document.getElementById('snav-offers');if(ds)ds.parentElement.style.display=found.role==='admin'?'':'none';
   showUserScreen();
-  if(found.role==='admin') renderApprovalList();
+  if(found.role==='admin'){
+    renderApprovalList();
+    updateApprovalBadge();
+  }
   showDDToast('Welcome, '+found.name+'!');
 }
 
 function doLogout(){
   CURRENT_USER=null;
+  var section=document.getElementById('snav-approval'); if(section) section.style.display='none';
   clearPinInput();
   document.getElementById('tab-login-btn').innerHTML='&#128274; Login';
   document.getElementById('login-screen').style.display='';
@@ -4062,20 +4028,29 @@ function renderApprovalList(){
     listEl.innerHTML='<div style="text-align:center;padding:24px;color:var(--text3);font-family:var(--mono);font-size:12px">No pending registrations.</div>';
   } else {
     listEl.innerHTML=PENDING_STAFF.map(function(s,i){
-      return '<div class="approval-card">' +
-        '<div class="staff-avatar">'+s.name.charAt(0).toUpperCase()+'</div>'+
-        '<div style="flex:1">'+
-          '<div style="font-weight:700;font-size:13px">'+esc(s.name)+'</div>'+
-          '<div style="font-size:11px;color:var(--text3)">'+esc(s.id)+' &bull; '+esc(s.dept)+'</div>'+
-          '<div style="font-size:11px;color:var(--text3)">'+esc(s.email)+' &bull; '+esc(s.phone)+'</div>'+
-          '<div style="font-size:10px;color:var(--text3);font-family:var(--mono)">Submitted: '+s.pendingDate+'</div>'+
+      return '<div class="approval-card" style="border-left:4px solid #f59e0b;background:linear-gradient(to right,#fffbeb,#fff)">'+
+        '<div style="display:flex;align-items:flex-start;gap:12px">'+
+          '<div class="staff-avatar" style="background:linear-gradient(135deg,#d97706,#b45309)">'+s.name.charAt(0).toUpperCase()+'</div>'+
+          '<div style="flex:1;min-width:0">'+
+            '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">'+
+              '<div style="font-weight:800;font-size:14px;color:#1a2533">'+esc(s.name)+'</div>'+
+              '<span style="background:#fef3c7;border:1px solid #fcd34d;color:#92400e;font-family:var(--mono);font-size:8px;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:.5px">&#9203; PENDING APPROVAL</span>'+
+            '</div>'+
+            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:3px 16px;margin-top:6px;font-size:11px;color:#4b5563">'+
+              '<div><b>ID:</b> '+esc(s.id)+'</div>'+
+              '<div><b>Dept:</b> '+esc(s.dept||'—')+'</div>'+
+              '<div>&#128231; '+esc(s.email)+'</div>'+
+              '<div>&#128222; '+esc(s.phone)+'</div>'+
+            '</div>'+
+            '<div style="font-size:10px;color:#9ca3af;font-family:var(--mono);margin-top:4px">Submitted: '+s.pendingDate+'</div>'+
+          '</div>'+
         '</div>'+
         (isAdmin?
-          '<div style="display:flex;gap:6px;flex-wrap:wrap">'+
-            '<button onclick="approveStaff('+i+')" style="background:#d1fae5;border:1px solid #6ee7b7;color:#065f46;font-family:var(--mono);font-size:9px;font-weight:700;padding:5px 10px;border-radius:5px;cursor:pointer">&#9989; Approve</button>'+
-            '<button onclick="rejectStaff('+i+')" style="background:#fee2e2;border:1px solid #fca5a5;color:#991b1b;font-family:var(--mono);font-size:9px;font-weight:700;padding:5px 10px;border-radius:5px;cursor:pointer">&#10060; Reject</button>'+
+          '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px solid #fde68a">'+
+            '<button onclick="approveStaff('+i+')" style="background:linear-gradient(135deg,#065f46,#007A4D);border:none;color:#fff;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:8px 16px;border-radius:7px;cursor:pointer;display:flex;align-items:center;gap:5px;box-shadow:0 2px 8px rgba(0,122,77,.3)">&#9989; Approve &amp; Generate PIN</button>'+
+            '<button onclick="rejectStaff('+i+')" style="background:#fff;border:1.5px solid #fca5a5;color:#991b1b;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:8px 16px;border-radius:7px;cursor:pointer">&#10060; Reject</button>'+
           '</div>'
-        : '<span class="approval-badge approval-pending">Pending</span>')+
+        :'<div style="margin-top:8px"><span class="approval-badge approval-pending">&#9203; Awaiting Admin Review</span></div>')+
       '</div>';
     }).join('');
   }
@@ -4091,15 +4066,123 @@ function renderApprovalList(){
 function approveStaff(i){
   if(!CURRENT_USER||CURRENT_USER.role!=='admin') return;
   var s=PENDING_STAFF[i];
-  // Generate temporary password
   var tmpPw=Math.floor(1000+Math.random()*9000).toString();
-  s.pw=tmpPw;
-  s.approved=true;
+  s.pw=tmpPw; s.approved=true; s.disabled=false;
+  s.loginCount=0; s.lastLogin=null; s.loginLog=[];
+  s.approvedDate=new Date().toLocaleDateString('en-GB');
+  s.approvedBy=CURRENT_USER.name;
   STAFF_DB.push(s);
   PENDING_STAFF.splice(i,1);
-  alert('Staff approved!\n\nTemporary PIN: '+tmpPw+'\n(Send this PIN to: '+s.email+')\n\nStaff can login with this numeric PIN.');
+  // Show approval modal with PIN and email content
+  showApprovalResult(s, tmpPw);
   renderApprovalList();
-  showDDToast('Approved: '+s.name);
+  updateApprovalBadge();
+  showDDToast('\u2705 Approved: '+s.name+' — PIN: '+tmpPw);
+}
+
+function showApprovalResult(s, pin){
+  var existing = document.getElementById('approval-result-overlay');
+  if(existing) existing.remove();
+
+  var overlay = document.createElement('div');
+  overlay.id='approval-result-overlay';
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:4000;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .15s ease';
+
+  // Build modal structure safely using DOM
+  var modal = document.createElement('div');
+  modal.style.cssText='background:#fff;border-radius:16px;padding:26px;max-width:500px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,.3);max-height:90vh;overflow-y:auto';
+
+  // Header
+  var head = document.createElement('div');
+  head.style.cssText='display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid #d1fae5';
+  head.innerHTML=
+    '<div style="background:linear-gradient(135deg,#065f46,#007A4D);color:#fff;width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">&#9989;</div>'+
+    '<div style="flex:1"><div style="font-weight:800;font-size:17px;color:#1a2533">Staff Approved!</div><div style="font-size:12px;color:#6b7280">'+esc(s.name)+' can now login to the system</div></div>';
+  var closeBtn = document.createElement('button');
+  closeBtn.innerHTML='&times;';
+  closeBtn.style.cssText='background:none;border:none;font-size:24px;cursor:pointer;color:#9ca3af;margin-left:auto;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0';
+  closeBtn.onclick = function(){ overlay.remove(); };
+  head.appendChild(closeBtn);
+  modal.appendChild(head);
+
+  // PIN box
+  var pinBox = document.createElement('div');
+  pinBox.style.cssText='background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #86efac;border-radius:12px;padding:18px 20px;margin-bottom:16px;text-align:center';
+  pinBox.innerHTML=
+    '<div style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#166534;margin-bottom:10px">&#128272; Staff Login PIN (Send to Staff)</div>'+
+    '<div style="font-family:var(--mono);font-size:48px;font-weight:900;color:#15803d;letter-spacing:14px;line-height:1;margin-bottom:10px">'+esc(pin)+'</div>'+
+    '<div style="font-size:10px;color:#166534;font-family:var(--mono);margin-bottom:12px">4-digit numeric PIN — staff login code</div>';
+  var copyPinBtn = document.createElement('button');
+  copyPinBtn.style.cssText='background:#007A4D;border:none;color:#fff;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:9px 20px;border-radius:7px;cursor:pointer;box-shadow:0 2px 8px rgba(0,122,77,.3)';
+  copyPinBtn.innerHTML='&#128203; Copy PIN';
+  copyPinBtn.onclick = function(){ adminCopyPin(pin, s.name); };
+  pinBox.appendChild(copyPinBtn);
+  modal.appendChild(pinBox);
+
+  // Staff info
+  var info = document.createElement('div');
+  info.style.cssText='background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:12px;line-height:1.9';
+  info.innerHTML=
+    '<div style="font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9ca3af;margin-bottom:6px">Staff Details</div>'+
+    '<div><b>Name:</b> '+esc(s.name)+'</div>'+
+    '<div><b>ID:</b> '+esc(s.id)+'</div>'+
+    '<div><b>Email:</b> <span style="color:var(--blue)">'+esc(s.email)+'</span></div>'+
+    '<div><b>Phone:</b> '+esc(s.phone)+'</div>'+
+    '<div><b>Department:</b> '+esc(s.dept||'—')+'</div>'+
+    '<div><b>Approved by:</b> '+esc(CURRENT_USER.name)+'</div>';
+  modal.appendChild(info);
+
+  // Email template
+  var emailBody =
+    'Dear '+s.name+',\n\n'+
+    'Your registration at Maxicare Children Hospital Drug Calculator has been APPROVED.\n\n'+
+    'Your Login PIN: '+pin+'\n\n'+
+    'Please use this PIN to login. Keep it confidential.\n\n'+
+    'Maxicare Children Hospital Drug Calculator\n\n'+
+    'Best regards,\n'+CURRENT_USER.name+'\nMaxicare Children Hospital';
+
+  var emailSection = document.createElement('div');
+  emailSection.style.cssText='margin-bottom:16px';
+  emailSection.innerHTML='<div style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#6b7280;margin-bottom:6px">&#128231; Email to send to Staff</div>';
+  var ta = document.createElement('textarea');
+  ta.id='ar-email-body';
+  ta.value=emailBody;
+  ta.style.cssText='width:100%;height:120px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 12px;font-size:11px;font-family:var(--mono);resize:vertical;outline:none;box-sizing:border-box;color:#374151';
+  emailSection.appendChild(ta);
+
+  var emailBtns = document.createElement('div');
+  emailBtns.style.cssText='display:flex;gap:8px;margin-top:8px;flex-wrap:wrap';
+  var copyEmailBtn = document.createElement('button');
+  copyEmailBtn.style.cssText='background:#dbeafe;border:1px solid #93c5fd;color:#1e3a8a;font-family:var(--mono);font-size:10px;font-weight:700;padding:8px 14px;border-radius:7px;cursor:pointer';
+  copyEmailBtn.innerHTML='&#128203; Copy Email Text';
+  copyEmailBtn.onclick = function(){ copyEmailBody(); };
+  var openMailBtn = document.createElement('a');
+  openMailBtn.href='mailto:'+s.email+'?subject=MCH Drug Calculator - Your Login PIN&body='+encodeURIComponent(emailBody);
+  openMailBtn.target='_blank';
+  openMailBtn.style.cssText='background:linear-gradient(135deg,#065f46,#007A4D);color:#fff;font-family:var(--mono);font-size:10px;font-weight:700;padding:8px 14px;border-radius:7px;text-decoration:none;display:inline-flex;align-items:center;gap:5px';
+  openMailBtn.innerHTML='&#128231; Open Email App';
+  emailBtns.appendChild(copyEmailBtn);
+  emailBtns.appendChild(openMailBtn);
+  emailSection.appendChild(emailBtns);
+  modal.appendChild(emailSection);
+
+  // Done button
+  var doneBtn = document.createElement('button');
+  doneBtn.style.cssText='width:100%;background:linear-gradient(135deg,var(--green),var(--green2));border:none;color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:13px;border-radius:10px;cursor:pointer;margin-top:4px;box-shadow:0 4px 12px rgba(0,122,77,.3)';
+  doneBtn.innerHTML='&#10003; Done — Close';
+  doneBtn.onclick = function(){ overlay.remove(); };
+  modal.appendChild(doneBtn);
+
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) overlay.remove(); });
+}
+
+function copyEmailBody(){
+  var ta = document.getElementById('ar-email-body');
+  if(!ta) return;
+  if(navigator.clipboard){ navigator.clipboard.writeText(ta.value).then(function(){ showDDToast('&#128203; Email copied to clipboard'); }); }
+  else { ta.select(); document.execCommand('copy'); showDDToast('&#128203; Email copied'); }
 }
 
 function rejectStaff(i){
@@ -4788,9 +4871,11 @@ function renderStaffRows(list){
     var ctrl='';
     if(isAdmin){
       ctrl='<div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;flex-shrink:0;margin-left:10px">'+
-        '<button onclick="adminResetPw(\''+sid+'\')" style="background:var(--blue);border:none;color:#fff;font-family:var(--mono);font-size:9px;font-weight:700;padding:6px 12px;border-radius:6px;cursor:pointer;white-space:nowrap">&#128272; Change PIN</button>'+
-        '<button onclick="adminToggleStaff(\''+sid+'\')" style="background:'+(s.disabled?'#fee2e2':'#f1f5f9')+';border:1px solid '+(s.disabled?'#fca5a5':'var(--border)')+';color:'+(s.disabled?'var(--red)':'var(--text2)')+';font-family:var(--mono);font-size:9px;font-weight:700;padding:6px 12px;border-radius:6px;cursor:pointer;white-space:nowrap">'+(s.disabled?'&#9940; Enable':'&#9989; Disable')+'</button>'+
-        (s.role!=='admin'?'<button onclick="adminRemoveStaff(\''+sid+'\')" style="background:#fee2e2;border:1px solid #fca5a5;color:var(--red);font-family:var(--mono);font-size:9px;font-weight:700;padding:6px 12px;border-radius:6px;cursor:pointer;white-space:nowrap">&#128465; Remove</button>':'')+''+
+        '<button onclick="showStaffPinModal(\''+sid+'\')" style="background:linear-gradient(135deg,#065f46,#007A4D);border:none;color:#fff;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:7px 14px;border-radius:7px;cursor:pointer;white-space:nowrap;box-shadow:0 2px 6px rgba(0,122,77,.3)">&#128272; View PIN &amp; Email</button>'+
+        '<button onclick="adminEditStaff(\''+sid+'\')" style="background:#dbeafe;border:1px solid #93c5fd;color:#1e3a8a;font-family:var(--mono);font-size:9px;font-weight:700;padding:7px 14px;border-radius:7px;cursor:pointer;white-space:nowrap">&#9998; Edit Info</button>'+
+        '<button onclick="adminResetPw(\''+sid+'\')" style="background:#f1f5f9;border:1px solid var(--border);color:var(--text2);font-family:var(--mono);font-size:9px;font-weight:700;padding:7px 14px;border-radius:7px;cursor:pointer;white-space:nowrap">&#128260; Change PIN</button>'+
+        '<button onclick="adminToggleStaff(\''+sid+'\')" style="background:'+(s.disabled?'#fff7ed':'#f0fdf4')+';border:1px solid '+(s.disabled?'#fdba74':'#86efac')+';color:'+(s.disabled?'#9a3412':'#166534')+';font-family:var(--mono);font-size:9px;font-weight:700;padding:7px 14px;border-radius:7px;cursor:pointer;white-space:nowrap">'+(s.disabled?'&#9940; Enable Account':'&#9989; Disable Account')+'</button>'+
+        (s.role!=='admin'?'<button onclick="adminRemoveStaff(\''+sid+'\')" style="background:#fff;border:1.5px solid #fca5a5;color:var(--red);font-family:var(--mono);font-size:9px;font-weight:700;padding:7px 14px;border-radius:7px;cursor:pointer;white-space:nowrap">&#128465; Delete Staff</button>':'')+''+
       '</div>';
     }
     return '<div class="staff-row" style="'+(s.disabled?'opacity:.6;background:#fef2f2;border-color:#fca5a5;':'')+'align-items:flex-start">'+
@@ -5788,6 +5873,192 @@ document.addEventListener('click', function(e){
   var m = document.getElementById('link-manager-overlay');
   if(m && e.target===m) closeLinkModal();
 });
+
+
+// ─── Show staff PIN in a nice modal
+function showStaffPinModal(staffId){
+  var s = STAFF_DB.find(function(x){return x.id===staffId;});
+  if(!s||!CURRENT_USER||CURRENT_USER.role!=='admin') return;
+  var pin = s.pw||'(not set)';
+
+  var old = document.getElementById('staff-pin-modal');
+  if(old) old.remove();
+
+  var emailBody =
+    'Dear '+s.name+',\n\n'+
+    'Your Maxicare Children Hospital Drug Calculator login PIN is:\n\n'+
+    'PIN: '+pin+'\n\n'+
+    'Please keep this PIN confidential. Use it to login to the Drug Calculator app.\n\n'+
+    'Best regards,\n'+CURRENT_USER.name+'\nMaxicare Children Hospital';
+
+  var overlay = document.createElement('div');
+  overlay.id='staff-pin-modal';
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:4000;display:flex;align-items:center;justify-content:center;padding:20px';
+
+  var modal = document.createElement('div');
+  modal.style.cssText='background:#fff;border-radius:16px;padding:24px;max-width:440px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,.3)';
+
+  // Header
+  var head = document.createElement('div');
+  head.style.cssText='display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid #f0fdf4';
+  head.innerHTML=
+    '<div style="background:linear-gradient(135deg,#065f46,#007A4D);color:#fff;width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px">&#128272;</div>'+
+    '<div style="flex:1"><div style="font-weight:800;font-size:16px">'+esc(s.name)+'</div><div style="font-size:10px;color:#6b7280;font-family:var(--mono)">'+esc(s.id)+' &bull; '+esc(s.dept||'—')+'</div></div>';
+  var closeBtn = document.createElement('button');
+  closeBtn.innerHTML='&times;';
+  closeBtn.style.cssText='background:none;border:none;font-size:24px;cursor:pointer;color:#9ca3af';
+  closeBtn.onclick = function(){ overlay.remove(); };
+  head.appendChild(closeBtn);
+  modal.appendChild(head);
+
+  // PIN display
+  var pinBox = document.createElement('div');
+  pinBox.style.cssText='background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #86efac;border-radius:12px;padding:18px;margin-bottom:16px;text-align:center';
+  pinBox.innerHTML=
+    '<div style="font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#166534;margin-bottom:10px">Current Login PIN</div>'+
+    '<div style="font-family:var(--mono);font-size:46px;font-weight:900;color:#15803d;letter-spacing:14px;line-height:1;margin-bottom:12px">'+esc(pin)+'</div>';
+  var pinBtns = document.createElement('div');
+  pinBtns.style.cssText='display:flex;gap:8px;justify-content:center;flex-wrap:wrap';
+  var cpBtn = document.createElement('button');
+  cpBtn.style.cssText='background:#007A4D;border:none;color:#fff;font-family:var(--mono);font-size:10px;font-weight:700;padding:8px 16px;border-radius:7px;cursor:pointer';
+  cpBtn.innerHTML='&#128203; Copy PIN';
+  cpBtn.onclick = function(){ adminCopyPin(pin, s.name); };
+  var chBtn = document.createElement('button');
+  chBtn.style.cssText='background:#dbeafe;border:1px solid #93c5fd;color:#1e3a8a;font-family:var(--mono);font-size:10px;font-weight:700;padding:8px 16px;border-radius:7px;cursor:pointer';
+  chBtn.innerHTML='&#128260; Change PIN';
+  chBtn.onclick = function(){ overlay.remove(); adminResetPw(s.id); };
+  pinBtns.appendChild(cpBtn);
+  pinBtns.appendChild(chBtn);
+  pinBox.appendChild(pinBtns);
+  modal.appendChild(pinBox);
+
+  // Email section
+  var emailSec = document.createElement('div');
+  emailSec.innerHTML='<div style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#6b7280;margin-bottom:6px">&#128231; Resend PIN Email</div>';
+  var ta = document.createElement('textarea');
+  ta.id='spm-email-body';
+  ta.value=emailBody;
+  ta.style.cssText='width:100%;height:110px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:8px;padding:10px;font-size:11px;font-family:var(--mono);resize:vertical;outline:none;box-sizing:border-box';
+  emailSec.appendChild(ta);
+  var ebBtns = document.createElement('div');
+  ebBtns.style.cssText='display:flex;gap:8px;margin-top:8px;flex-wrap:wrap';
+  var cpEBtn = document.createElement('button');
+  cpEBtn.style.cssText='background:#e0f2fe;border:1px solid #7dd3fc;color:#0369a1;font-family:var(--mono);font-size:10px;font-weight:700;padding:7px 12px;border-radius:6px;cursor:pointer';
+  cpEBtn.innerHTML='&#128203; Copy Email';
+  cpEBtn.onclick = function(){
+    var t=document.getElementById('spm-email-body');
+    if(navigator.clipboard) navigator.clipboard.writeText(t.value).then(function(){showDDToast('Email text copied');});
+    else { t.select(); document.execCommand('copy'); showDDToast('Copied'); }
+  };
+  var openMLink = document.createElement('a');
+  openMLink.href='mailto:'+s.email+'?subject=MCH Drug Calculator - Login PIN&body='+encodeURIComponent(emailBody);
+  openMLink.target='_blank';
+  openMLink.style.cssText='background:linear-gradient(135deg,#065f46,#007A4D);color:#fff;font-family:var(--mono);font-size:10px;font-weight:700;padding:7px 14px;border-radius:6px;text-decoration:none;display:inline-flex;align-items:center;gap:4px';
+  openMLink.innerHTML='&#128231; Open in Email';
+  ebBtns.appendChild(cpEBtn);
+  ebBtns.appendChild(openMLink);
+  emailSec.appendChild(ebBtns);
+  modal.appendChild(emailSec);
+
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) overlay.remove(); });
+}
+
+// ─── Edit staff info (name, dept, email, phone)
+function adminEditStaff(staffId){
+  var s = STAFF_DB.find(function(x){return x.id===staffId;});
+  if(!s||!CURRENT_USER||CURRENT_USER.role!=='admin') return;
+
+  var old2 = document.getElementById('staff-edit-modal');
+  if(old2) old2.remove();
+
+  var overlay = document.createElement('div');
+  overlay.id = 'staff-edit-modal';
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:4000;display:flex;align-items:center;justify-content:center;padding:20px';
+  overlay.innerHTML =
+    '<div style="background:#fff;border-radius:16px;padding:24px;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,.3)">'+
+      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid #e2e8f0">'+
+        '<div style="background:linear-gradient(135deg,#1e40af,#2563eb);color:#fff;width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px">&#9998;</div>'+
+        '<div style="flex:1"><div style="font-weight:800;font-size:16px">Edit Staff</div><div style="font-size:10px;color:#6b7280;font-family:var(--mono)">'+esc(s.id)+'</div></div>'+
+        '<button onclick="document.getElementById(\'staff-edit-modal\').remove()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#9ca3af">&times;</button>'+
+      '</div>'+
+      '<input type="hidden" id="sem-staff-id" value="'+esc(s.id)+'">'+
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">'+
+        '<div style="grid-column:1/-1"><label style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#718096;display:block;margin-bottom:5px">Full Name</label><input type="text" id="sem-name" value="'+esc(s.name)+'" style="width:100%;background:#f8fafc;border:1.5px solid #e2e8f0;padding:10px 12px;border-radius:8px;font-size:14px;font-weight:600;outline:none;box-sizing:border-box" onfocus="this.style.borderColor=\'var(--green)\'" onblur="this.style.borderColor=\'#e2e8f0\'"></div>'+
+        '<div><label style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#718096;display:block;margin-bottom:5px">Email</label><input type="email" id="sem-email" value="'+esc(s.email||'')+'" style="width:100%;background:#f8fafc;border:1.5px solid #e2e8f0;padding:10px 12px;border-radius:8px;font-size:13px;outline:none;box-sizing:border-box" onfocus="this.style.borderColor=\'var(--green)\'" onblur="this.style.borderColor=\'#e2e8f0\'"></div>'+
+        '<div><label style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#718096;display:block;margin-bottom:5px">Phone</label><input type="text" id="sem-phone" value="'+esc(s.phone||'')+'" style="width:100%;background:#f8fafc;border:1.5px solid #e2e8f0;padding:10px 12px;border-radius:8px;font-size:13px;outline:none;box-sizing:border-box" onfocus="this.style.borderColor=\'var(--green)\'" onblur="this.style.borderColor=\'#e2e8f0\'"></div>'+
+        '<div style="grid-column:1/-1"><label style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#718096;display:block;margin-bottom:5px">Department / Position</label><input type="text" id="sem-dept" value="'+esc(s.dept||'')+'" style="width:100%;background:#f8fafc;border:1.5px solid #e2e8f0;padding:10px 12px;border-radius:8px;font-size:13px;outline:none;box-sizing:border-box" onfocus="this.style.borderColor=\'var(--green)\'" onblur="this.style.borderColor=\'#e2e8f0\'"></div>'+
+      '</div>'+
+      '<div style="display:flex;gap:8px;justify-content:flex-end;padding-top:14px;border-top:1px solid #f0f4f8">'+
+        '<button onclick="document.getElementById(\'staff-edit-modal\').remove()" style="background:#f1f5f9;border:1.5px solid #e2e8f0;color:#374151;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:10px 18px;border-radius:8px;cursor:pointer">Cancel</button>'+
+        '<button onclick="adminSaveEditStaff()" style="background:linear-gradient(135deg,#1e40af,#2563eb);border:none;color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:10px 20px;border-radius:8px;cursor:pointer">&#10003; Save Changes</button>'+
+      '</div>'+
+    '</div>';
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) overlay.remove(); });
+}
+
+function adminSaveEditStaff(){
+  var staffId = document.getElementById('sem-staff-id').value;
+  var s = STAFF_DB.find(function(x){return x.id===staffId;});
+  if(!s) return;
+  var newName  = (document.getElementById('sem-name').value||'').trim();
+  var newEmail = (document.getElementById('sem-email').value||'').trim();
+  var newPhone = (document.getElementById('sem-phone').value||'').trim();
+  var newDept  = (document.getElementById('sem-dept').value||'').trim();
+  if(!newName){ showDDToast('Name is required'); return; }
+  s.name  = newName;
+  s.email = newEmail;
+  s.phone = newPhone;
+  s.dept  = newDept;
+  document.getElementById('staff-edit-modal').remove();
+  renderApprovalList();
+  showDDToast('&#10003; Staff updated: '+newName);
+}
+
+
+// ─── Navigate to Staff Approval dashboard from sidebar
+function gotoApprovalDash(tab){
+  if(!CURRENT_USER||CURRENT_USER.role!=='admin'){ showDDToast('Admin access required'); return; }
+  // Switch to dash panel
+  showTab('dash', document.querySelector('.tab-btn'));
+  setTimeout(function(){
+    // Open Approval section in dashboard
+    var approvalBtn = document.querySelector('[onclick*="openDashPanel(\'approval\'"]') || document.querySelector('[onclick*="openDashPanel(\"approval\")"]');
+    if(approvalBtn) approvalBtn.click();
+    else{
+      // Try finding any approval tab button
+      document.querySelectorAll('.dash-tab-btn,.dash-section-btn').forEach(function(b){
+        if(b.textContent.indexOf('Approval')>-1||b.textContent.indexOf('Staff')>-1) b.click();
+      });
+    }
+    // Scroll to correct sub-tab
+    if(tab){
+      setTimeout(function(){
+        document.querySelectorAll('.approval-tab-btn,[data-tab]').forEach(function(b){
+          if((tab==='pending'&&(b.textContent.indexOf('Pending')>-1||b.dataset.tab==='pending'))||
+             (tab==='staff'&&(b.textContent.indexOf('Staff')>-1||b.dataset.tab==='staff')))
+            b.click();
+        });
+      }, 200);
+    }
+    closeSidebar();
+  }, 100);
+}
+
+// ─── Update the pending count badge in sidebar
+function updateApprovalBadge(){
+  var count = PENDING_STAFF.length;
+  var badge  = document.getElementById('snav-pending-badge');
+  var countEl= document.getElementById('snav-pending-count');
+  var item   = document.getElementById('snav-pending-item');
+  if(badge){  badge.textContent=count>0?count:''; badge.style.display=count>0?'':'none'; }
+  if(countEl){countEl.textContent=count; countEl.style.display=count>0?'':'none';}
+  // Show/hide entire approval nav section (admin only)
+  var section=document.getElementById('snav-approval');
+  if(section) section.style.display=(CURRENT_USER&&CURRENT_USER.role==='admin')?'':'none';
+}
 
 // ─── PRINT ───
 function doPrint(){
